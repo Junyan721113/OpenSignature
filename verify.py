@@ -53,12 +53,12 @@ def console_main(language):
         infile_text = "【消息】请输入待验证的文件路径: "
         infile_invalid_text = "【失败】待验证的文件不存在!"
         verify_invalid_text = "【失败】验证失败!"
-        success_text = "【成功】验证成功! 公钥名称:"
+        success_text = "【成功】验证成功! 来自密钥:"
     else:
         infile_text = "[Info] Please input the file path to be verified: "
         infile_invalid_text = "[Fail] The file to be verified does not exist!"
         verify_invalid_text = "[Fail] Verification failed!"
-        success_text = "[Done] Verification succeeded! Public key name:"
+        success_text = "[Done] Verification succeeded! From key:"
 
     ret = -1
 

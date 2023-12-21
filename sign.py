@@ -67,7 +67,7 @@ def console_main(language):
         keyfile_invalid_text = "【失败】私钥文件不存在!"
         infile_invalid_text = "【失败】待签名的文件不存在!"
         passwd_invalid_text = "【失败】密码错误!"
-        success_text = "【成功】签名成功!"
+        success_text = "【成功】签名成功! 使用的密钥:"
     else:
         keyfile_text = "[Info] Please input the name of private key: "
         passwd_text = "[Info] Please input the password: "
@@ -75,7 +75,7 @@ def console_main(language):
         keyfile_invalid_text = "[Fail] Private key file does not exist!"
         infile_invalid_text = "[Fail] File to be signed does not exist!"
         passwd_invalid_text = "[Fail] Password wrong!"
-        success_text = "[Done] Signature success!"
+        success_text = "[Done] Signature success! Used key:"
 
     ret = -1
 
@@ -88,11 +88,18 @@ def console_main(language):
             print(passwd_invalid_text)
 
         keyfile_name = input(keyfile_text)
+        keyfile = "secrets/" + keyfile_name + "_private_encrypted.pem"
+        # 判断私钥文件是否存在
+        if not os.path.exists(keyfile):
+            print(keyfile_invalid_text)
+            ret = -1
+            continue
+
         passwd = getpass.getpass(passwd_text)  # 隐藏输入密码
         infile = input(infile_text)
         ret = sign_file(keyfile, passwd, infile)
 
-    print(success_text)
+    print(success_text, keyfile_name)
 
 
 if __name__ == "__main__":
