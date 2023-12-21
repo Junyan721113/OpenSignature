@@ -35,6 +35,14 @@ def sign_file(keyfile: str, passwd: str, infile: str):
     with open(infile, "rb") as infile_opened:
         in_file_raw = infile_opened.read()
 
+    # 计算 MD5
+    md5 = hashes.Hash(hashes.MD5())
+    md5.update(in_file_raw)
+    md5 = md5.finalize()
+
+    # print("MD5: ", md5)
+    # print("MD5 Length: ", len(md5))
+
     # 创建签名
     signature = private_key.sign(
         in_file_raw,
@@ -54,7 +62,7 @@ def sign_file(keyfile: str, passwd: str, infile: str):
 
     # 保存签名后的文件
     with open(infile_name + ".signed." + infile_ext, "wb") as f:
-        f.write(in_file_raw + signature)
+        f.write(in_file_raw + md5 + signature)
 
     return SUCCESS
 

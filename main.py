@@ -7,7 +7,7 @@ if __name__ == "__main__":
     language = input("中文请输入 1，English please input 2: ")
 
     if language == "1":
-        main_text = "#### OpenSignature 遵循 AGPL-3.0 许可证 ####\n" \
+        main_text = "#### OpenSignature ####\n#### 遵循 AGPL-3.0 许可证 ####\n" \
                     + "【消息】请选择你要进行的操作: \n" \
                     + "【消息】1. 生成密钥对\n" \
                     + "【消息】2. 进行签名\n" \
@@ -17,7 +17,7 @@ if __name__ == "__main__":
                     + "【消息】请输入你的选择: "
         enter_text = "【消息】按下回车以继续。。。"
     else:
-        main_text = "#### OpenSignature is licensed under AGPL-3.0 ####\n" \
+        main_text = "#### OpenSignature ####\n#### Licensed under AGPL-3.0 ####\n" \
                     + "[Info] Please select the operation you want to perform: \n" \
                     + "[Info] 1. Generate key pair\n" \
                     + "[Info] 2. Sign\n" \
